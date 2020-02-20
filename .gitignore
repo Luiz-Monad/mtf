@@ -1,0 +1,5 @@
+obj/*
+bin/*
+.vs/*
+.ionide/*
+paket-files/paket.restore.cached
