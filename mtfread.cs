@@ -44,7 +44,7 @@ using static mtfutil;
 
 public class mtfread : imtf {
 
-    public string outPath; 
+    public string outPath;
     public string curPath;
     public FileStream mtfd = null;
     public Byte verbose, debug, list, forceCase;
@@ -55,12 +55,12 @@ public class mtfread : imtf {
     public Regex[] match = new Regex[MAX_PATTERN];
 
 
-	private Boolean compressPossible;
-	private Boolean filemark;
-	private UInt16 flbSize = 0;
-	protected Int32 remaining;
-	private UInt16 setCompress;
-	private UInt32 blockCnt;
+    private Boolean compressPossible;
+    private Boolean filemark;
+    private UInt16 flbSize = 0;
+    protected Int32 remaining;
+    private UInt16 setCompress;
+    private UInt32 blockCnt;
 
 
     private MTF_DB_HDR dbHdr;
@@ -84,17 +84,17 @@ public class mtfread : imtf {
     }
 
     public int offsetOf(Memory<byte> buffer)
-    {        
+    {
         return offsets.offsetOf(buffer);
     }
 
-    public int offsetOf<T>(T buffer) 
-    {        
+    public int offsetOf<T>(T buffer)
+    {
         return offsets.offsetOf<T>(buffer);
     }
 
-    public Memory<byte> addrOf<T>(T buffer) 
-    {        
+    public Memory<byte> addrOf<T>(T buffer)
+    {
         return offsets.addrOf<T>(buffer);
     }
 
@@ -119,7 +119,7 @@ public class mtfread : imtf {
     }
 
     public ref T access<T>(MTF_DIRB_BLK buffer, int offset) where T : struct
-    { 
+    {
         return ref offsets.access<T, MTF_DIRB_BLK>(buffer, offset);
     }
 
@@ -140,7 +140,7 @@ public class mtfread : imtf {
         blockCnt = 0;
         filemark = false;
 
-        result = readNextBlock(0); 
+        result = readNextBlock(0);
         if (result != 0)
         {
             fprintf(stderr, "Error reading first block!\n");
@@ -172,7 +172,7 @@ public class mtfread : imtf {
     public override Int32 readDataSet()
     {
         Int32 result;
-        
+
         if (verbose > 0) fprintf(stdout, "\nReading SSET block...\n");
 
         filemark = false;
@@ -262,7 +262,7 @@ public class mtfread : imtf {
                         }
                     }
 
-                    result = readNextBlock(flbSize); 
+                    result = readNextBlock(flbSize);
                     break;
             }
         }
@@ -279,7 +279,7 @@ public class mtfread : imtf {
         }
         else
         {
-            result = readNextBlock(0); 
+            result = readNextBlock(0);
             if (result < 0)
             {
                 fprintf(stderr, "Error reading tape block!\n");
@@ -314,10 +314,10 @@ public class mtfread : imtf {
 
         eset = access<MTF_ESET_BLK>(dbHdr, 0);
 
-        result = readNextBlock(0); 
+        result = readNextBlock(0);
         while (result == 0)
         {
-            result = readNextBlock(0); 
+            result = readNextBlock(0);
         }
 
         if (result < 0)
@@ -334,7 +334,7 @@ public class mtfread : imtf {
 
         filemark = false;
 
-        result = readNextBlock(0); 
+        result = readNextBlock(0);
         if (result < 0)
         {
             fprintf(stderr, "Error reading tape block!\n");
@@ -351,7 +351,7 @@ public class mtfread : imtf {
     public override Int32 readTapeBlock()
     {
         Int32 result;
-        
+
         if (tape.ver != 1)
         {
             fprintf(stderr, "Unexpected MTF major version!\n");
@@ -436,7 +436,7 @@ public class mtfread : imtf {
     public override Int32 readStartOfSetBlock()
     {
         Int32 result;
-        
+
         if (verbose > 1)
         {
             fprintf(stdout, "Descriptor Block Attributes: %08lX\n", dbHdr.attr);
@@ -502,7 +502,7 @@ public class mtfread : imtf {
     public override Int32 readVolumeBlock()
     {
         Int32 result;
-        
+
         if (verbose > 1)
         {
             fprintf(stdout, "Descriptor Block Attributes: %08lX\n", dbHdr.attr);
@@ -591,9 +591,9 @@ public class mtfread : imtf {
                 {
                     try
                     {
-					    var ix = fullPath.LastIndexOf('/');
+                        var ix = fullPath.LastIndexOf('/');
                         var tmpPath = fullPath.Substring(0, ix);
-					    var str2 = fullPath.Substring(ix);
+                        var str2 = fullPath.Substring(ix);
                         try {
 
                             var res = Directory.Exists(tmpPath);
@@ -767,7 +767,7 @@ public class mtfread : imtf {
 
             return(0);
         }
-		
+
         if ((file.attr & MTF_FILE_NAME_IN_STREAM_BIT) == 0)
         {
             ptr = getString(dbHdr.strType, file.name.size,
@@ -801,7 +801,7 @@ public class mtfread : imtf {
                 else
                     i = -1;
             }
-            
+
             if (i >= 0)
             {
                 if (verbose > 0)
@@ -827,7 +827,7 @@ public class mtfread : imtf {
                 fprintf(stdout, "File will be written to %s\n", fullPath);
             else
                 fprintf(stdout, "%s\n", fullPath);
-            
+
             if (matchCnt > 0)
             {
                 var ix = fullPath.LastIndexOf('/');
@@ -1170,7 +1170,7 @@ public class mtfread : imtf {
                 return(-1);
             }
         }
-        
+
         return(0);
     }
 
@@ -1203,7 +1203,7 @@ public class mtfread : imtf {
                 return(-1);
             }
         }
-        
+
         return(0);
     }
 
@@ -1311,7 +1311,7 @@ public class mtfread : imtf {
 
                         filemark = true;
                         remaining = 0;
-                        
+
                         return(1);
                     }
 
@@ -1383,7 +1383,7 @@ public class mtfread : imtf {
     public override Int32 skipToNextBlock()
     {
         Int32 offset;
-        
+
         while ((stream.id != MTF_STAN) && (stream.id != MTF_SPAD))
         {
             offset = skipOverStream();
@@ -1470,7 +1470,7 @@ public class mtfread : imtf {
 
             offset -= remaining;
 
-            result = readNextBlock(remaining); 
+            result = readNextBlock(remaining);
             if (result != 0)
             {
                 fprintf(stderr, "Error reading tape block!\n");
@@ -1529,7 +1529,7 @@ public class mtfread : imtf {
         {
             while (hdr.length > 0)
             {
-                result = readNextBlock(0); 
+                result = readNextBlock(0);
                 if (result != 0)
                 {
                     fprintf(stderr, "Error reading tape block!\n");
@@ -1559,7 +1559,7 @@ public class mtfread : imtf {
             bytes -= bytes % flbSize;
             offset -= bytes;
 
-            result = readNextBlock(bytes); 
+            result = readNextBlock(bytes);
             if (result < 0)
             {
                 fprintf(stderr, "Error reading tape block!\n");
@@ -1596,7 +1596,7 @@ public class mtfread : imtf {
 
             offset -= remaining;
 
-            result = readNextBlock(0); 
+            result = readNextBlock(0);
             if (result != 0)
             {
                 fprintf(stderr, "Error reading tape block!\n");
@@ -1660,7 +1660,7 @@ public class mtfread : imtf {
         {
             while (hdr.length > 0)
             {
-                result = readNextBlock(0); 
+                result = readNextBlock(0);
                 if (result != 0)
                 {
                     fprintf(stderr, "Error reading tape block!\n");
@@ -1696,7 +1696,7 @@ public class mtfread : imtf {
             bytes -= bytes % flbSize;
             offset -= bytes;
 
-            result = readNextBlock(bytes); 
+            result = readNextBlock(bytes);
             if (result < 0)
             {
                 fprintf(stderr, "Error reading tape block!\n");
@@ -1737,7 +1737,7 @@ public class mtfread : imtf {
             {
                 str = System.Text.Encoding.ASCII.GetString(buffer.Span);
             }
-            
+
             str = str.Replace((char)0, '/');
 
             return(str);

@@ -114,7 +114,7 @@ class pmtf : mtfread {
         else if (verbose > 1)
         {
             fprintf(stdout, "Very verbose mode selected.\n");
-            
+
             if (list > 0) fprintf(stdout, "List mode selected.\n");
 
             if (forceCase == CASE_UPPER)
@@ -129,12 +129,12 @@ class pmtf : mtfread {
             if (setNum != 0) fprintf(stdout, "Set %u will be \n", setNum);
 
             fprintf(stdout, "Files will be written to %s.\n", outPath);
-		    fprintf(stdout, "Tape device will be %s.\n", device);
+            fprintf(stdout, "Tape device will be %s.\n", device);
 
             if (minFree != 0)
                 fprintf(stdout, "Free space of %lu bytes will be maintained.\n",
                         minFree);
-            
+
             if (matchCnt > 0)
                 fprintf(stdout, "%u patterns were found.\n", matchCnt);
         }
@@ -228,7 +228,7 @@ class pmtf : mtfread {
             goto next;
 
         if (verbose > 0) fprintf(stdout, "Successful read of archive!\n");
-        
+
         close(mtfd);
 
         return(0);
@@ -332,7 +332,7 @@ class pmtf : mtfread {
 
                     if (whichDevice(argv[i]) != 0)
                         return(-1);
-                }                
+                }
                 else if (str == "b")
                 {
                     i += 1;
@@ -485,7 +485,7 @@ class pmtf : mtfread {
         outPath = argv;
 
         return(0);
-    } 
+    }
 
 
     Int16 setCase(string argv)
@@ -511,7 +511,7 @@ class pmtf : mtfread {
         }
 
         return(0);
-    } 
+    }
 
 
     Int16 setMinFree(string argv)
@@ -560,7 +560,7 @@ class pmtf : mtfread {
         minFree *= multiplier;
 
         return(0);
-    } 
+    }
 
 
     Int16 getPatterns(int argc, string[] argv, int start)
@@ -616,7 +616,7 @@ class pmtf : mtfread {
         fprintf(stderr, "    -D               debug\n");
         fprintf(stderr, "    -l               list contents\n");
         fprintf(stderr, "    -b bytes         tape block size\n");
-	    fprintf(stderr, "    -d device        device/file to read from\n");
+        fprintf(stderr, "    -d device        device/file to read from\n");
         fprintf(stderr, "    -s set           number of data set to read\n");
         fprintf(stderr, "    -c [lower|upper] force the case of paths\n");
         fprintf(stderr, "    -o path          root path to write files to\n");

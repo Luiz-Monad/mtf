@@ -336,7 +336,7 @@ public abstract class imtf {
     [StructLayout(LayoutKind.Sequential, Pack=1)]
     public struct MTF_ESPB_BLK {
          public MTF_DB_HDR		common;		/* common block header */
-    }; 
+    };
 
     /* descriptor block for MTF_DB_HDR.type = MTF_ESET (end of data set) */
     [StructLayout(LayoutKind.Sequential, Pack=1)]
