@@ -362,7 +362,7 @@ public class mtfread : imtf {
         {
             fprintf(stdout, "Descriptor Block Attributes: %08lX\n", dbHdr.attr);
             fprintf(stdout, "TAPE Block Attributes: %08lX\n", tape.attr);
-            fprintf(stdout, "Format Logical Address: %luu\n", dbHdr.fla);
+            fprintf(stdout, "Format Logical Address: %llu\n", dbHdr.fla);
             fprintf(stdout, "Offset To First Event: %u\n", dbHdr.off);
             fprintf(stdout, "String Type: %u\n", dbHdr.strType);
             fprintf(stdout, "OS: %u\n", dbHdr.osId);
@@ -441,7 +441,7 @@ public class mtfread : imtf {
         {
             fprintf(stdout, "Descriptor Block Attributes: %08lX\n", dbHdr.attr);
             fprintf(stdout, "SSET Block Attributes: %08lX\n", sset.attr);
-            fprintf(stdout, "Format Logical Address: %luu\n", dbHdr.fla);
+            fprintf(stdout, "Format Logical Address: %llu\n", dbHdr.fla);
             fprintf(stdout, "Offset To First Event: %u\n", dbHdr.off);
             fprintf(stdout, "String Type: %u\n", dbHdr.strType);
             fprintf(stdout, "OS: %u\n", dbHdr.osId);
@@ -451,7 +451,7 @@ public class mtfread : imtf {
             fprintf(stdout, "Software Major Version: %u\n", sset.major);
             fprintf(stdout, "Software Minor Version: %u\n", sset.minor);
             fprintf(stdout, "Data Set Number: %u\n", sset.num);
-            fprintf(stdout, "Physical Block Address: %luu\n", sset.pba);
+            fprintf(stdout, "Physical Block Address: %llu\n", sset.pba);
             fprintf(stdout, "Password Encryption: %u\n", sset.passEncrypt);
             fprintf(stdout, "Software Compression: %u\n", sset.softCompress);
         }
@@ -506,7 +506,7 @@ public class mtfread : imtf {
         if (verbose > 1)
         {
             fprintf(stdout, "Descriptor Block Attributes: %08lX\n", dbHdr.attr);
-            fprintf(stdout, "Format Logical Address: %luu\n", dbHdr.fla);
+            fprintf(stdout, "Format Logical Address: %llu\n", dbHdr.fla);
             fprintf(stdout, "Offset To First Event: %u\n", dbHdr.off);
             fprintf(stdout, "String Type: %u\n", dbHdr.strType);
             fprintf(stdout, "OS: %u\n", dbHdr.osId);
@@ -561,7 +561,7 @@ public class mtfread : imtf {
         if (verbose > 1)
         {
             fprintf(stdout, "Descriptor Block Attributes: %08lX\n", dbHdr.attr);
-            fprintf(stdout, "Format Logical Address: %luu\n", dbHdr.fla);
+            fprintf(stdout, "Format Logical Address: %llu\n", dbHdr.fla);
             fprintf(stdout, "Offset To First Event: %u\n", dbHdr.off);
             fprintf(stdout, "String Type: %u\n", dbHdr.strType);
             fprintf(stdout, "OS: %u\n", dbHdr.osId);
@@ -703,7 +703,7 @@ public class mtfread : imtf {
         if (verbose > 1)
         {
             fprintf(stdout, "Descriptor Block Attributes: %08lX\n", dbHdr.attr);
-            fprintf(stdout, "Format Logical Address: %luu\n", dbHdr.fla);
+            fprintf(stdout, "Format Logical Address: %llu\n", dbHdr.fla);
             fprintf(stdout, "Offset To First Event: %u\n", dbHdr.off);
             fprintf(stdout, "String Type: %u\n", dbHdr.strType);
             fprintf(stdout, "OS: %u\n", dbHdr.osId);
@@ -1042,7 +1042,7 @@ public class mtfread : imtf {
         if (verbose > 1)
         {
             fprintf(stdout, "Descriptor Block Attributes: %08lX\n", dbHdr.attr);
-            fprintf(stdout, "Format Logical Address: %luu\n", dbHdr.fla);
+            fprintf(stdout, "Format Logical Address: %llu\n", dbHdr.fla);
             fprintf(stdout, "Offset To First Event: %u\n", dbHdr.off);
             fprintf(stdout, "String Type: %u\n", dbHdr.strType);
             fprintf(stdout, "OS: %u\n", dbHdr.osId);
@@ -1079,7 +1079,7 @@ public class mtfread : imtf {
         if (verbose > 1)
         {
             fprintf(stdout, "Descriptor Block Attributes: %08lX\n", dbHdr.attr);
-            fprintf(stdout, "Format Logical Address: %luu\n", dbHdr.fla);
+            fprintf(stdout, "Format Logical Address: %llu\n", dbHdr.fla);
             fprintf(stdout, "Offset To First Event: %u\n", dbHdr.off);
             fprintf(stdout, "String Type: %u\n", dbHdr.strType);
             fprintf(stdout, "OS: %u\n", dbHdr.osId);
@@ -1114,7 +1114,7 @@ public class mtfread : imtf {
         if (verbose > 1)
         {
             fprintf(stdout, "Descriptor Block Attributes: %08lX\n", dbHdr.attr);
-            fprintf(stdout, "Format Logical Address: %luu\n", dbHdr.fla);
+            fprintf(stdout, "Format Logical Address: %llu\n", dbHdr.fla);
             fprintf(stdout, "Offset To First Event: %u\n", dbHdr.off);
             fprintf(stdout, "String Type: %u\n", dbHdr.strType);
             fprintf(stdout, "OS: %u\n", dbHdr.osId);
@@ -1147,7 +1147,7 @@ public class mtfread : imtf {
         if (verbose > 1)
         {
             fprintf(stdout, "Descriptor Block Attributes: %08lX\n", dbHdr.attr);
-            fprintf(stdout, "Format Logical Address: %luu\n", dbHdr.fla);
+            fprintf(stdout, "Format Logical Address: %llu\n", dbHdr.fla);
             fprintf(stdout, "Offset To First Event: %u\n", dbHdr.off);
             fprintf(stdout, "String Type: %u\n", dbHdr.strType);
             fprintf(stdout, "OS: %u\n", dbHdr.osId);
@@ -1180,7 +1180,7 @@ public class mtfread : imtf {
         if (verbose > 1)
         {
             fprintf(stdout, "Descriptor Block Attributes: %08lX\n", dbHdr.attr);
-            fprintf(stdout, "Format Logical Address: %luu\n", dbHdr.fla);
+            fprintf(stdout, "Format Logical Address: %llu\n", dbHdr.fla);
             fprintf(stdout, "Offset To First Event: %u\n", dbHdr.off);
             fprintf(stdout, "String Type: %u\n", dbHdr.strType);
             fprintf(stdout, "OS: %u\n", dbHdr.osId);
@@ -1504,7 +1504,7 @@ public class mtfread : imtf {
 
             fprintf(stdout, "System Attributes: %04X\n", hdr.sysAttr);
             fprintf(stdout, "Media Attributes: %04X\n", hdr.mediaAttr);
-            fprintf(stdout, "Stream Length: %luu\n", hdr.length);
+            fprintf(stdout, "Stream Length: %llu\n", hdr.length);
             fprintf(stdout, "Data Encryption: %u\n", hdr.encrypt);
             fprintf(stdout, "Data Compression: %u\n", hdr.compress);
         }
@@ -1519,7 +1519,7 @@ public class mtfread : imtf {
         hdr.length = hdr.length - (UInt64)bytes;
 
         if (debug > 0)
-            fprintf(stderr, "%luu not yet skipped\n", hdr.length);
+            fprintf(stderr, "%llu not yet skipped\n", hdr.length);
 
         if (hdr.length == 0)
         {
@@ -1544,7 +1544,7 @@ public class mtfread : imtf {
                 hdr.length = hdr.length - (UInt64)bytes;
 
                 if (debug > 0)
-                    fprintf(stderr, "%luu not yet skipped\n", hdr.length);
+                    fprintf(stderr, "%llu not yet skipped\n", hdr.length);
             }
 
             offset = bytes;
@@ -1617,7 +1617,7 @@ public class mtfread : imtf {
         {
             fprintf(stdout, "System Attributes: %04X\n", hdr.sysAttr);
             fprintf(stdout, "Media Attributes: %04X\n", hdr.mediaAttr);
-            fprintf(stdout, "Stream Length: %luu\n", hdr.length);
+            fprintf(stdout, "Stream Length: %llu\n", hdr.length);
             fprintf(stdout, "Data Encryption: %u\n", hdr.encrypt);
             fprintf(stdout, "Data Compression: %u\n", hdr.compress);
         }
@@ -1650,7 +1650,7 @@ public class mtfread : imtf {
         hdr.length = hdr.length - (UInt64)bytes;
 
         if (debug > 0)
-            fprintf(stderr, "%luu not yet written\n", hdr.length);
+            fprintf(stderr, "%llu not yet written\n", hdr.length);
 
         if (hdr.length == 0)
         {
@@ -1681,7 +1681,7 @@ public class mtfread : imtf {
                 hdr.length = hdr.length - (UInt64)bytes;
 
                 if (debug > 0)
-                    fprintf(stderr, "%luu not yet written\n", hdr.length);
+                    fprintf(stderr, "%llu not yet written\n", hdr.length);
             }
 
             offset = bytes;

@@ -38,6 +38,7 @@ See mtf.c for version history, contributors, etc.
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
@@ -59,7 +60,7 @@ public static class mtfutil {
 
     public static ref T access<T>(this OffsetList offsets, Memory<byte> buffer, int offset) where T : struct
     {
-        var slice = buffer.Slice(0, offset);
+        var slice = buffer.Slice(offset);
         offsets.regions.AddOrSet(buffer, 0);
         offsets.regions.AddOrSet(slice, offset);
         offsets.sources.AddOrSet(typeof(T), Tuple.Create(slice, offset));
@@ -69,7 +70,7 @@ public static class mtfutil {
     public static ref T access<T, B>(this OffsetList offsets, B buffer, int offset) where T : struct
     {
         var source = offsets.sources[typeof(B)];
-        var slice = source.Item1.Slice(0, offset);
+        var slice = source.Item1.Slice(offset);
         var position = source.Item2 + offset;
         offsets.regions.AddOrSet(slice, position);
         offsets.sources.AddOrSet(typeof(T), Tuple.Create(slice, position));
@@ -124,7 +125,7 @@ public static class mtfutil {
     {
 
         var handle = open(fileName, O_WRONLY | O_TRUNC | O_CREAT);
-        if (handle.Item2 != null)
+        if (handle.Item1 != null)
         {
             write(handle.Item1, buffer, 0, size);
             close(handle.Item1);
@@ -155,14 +156,18 @@ public static class mtfutil {
         return Char.IsLetterOrDigit((Char)c);
     }
 
+    private static Regex fformat = new Regex("[%](?<flags>[-+ #0]+?)*(?<width>[\\d*]+?)*(?<precision>.[\\d*]+?)*(?<length>[hl]*[hljztL])*(?<specifier>[diuoxXfFeEgGaAcspn%])", RegexOptions.Compiled);
+
     public static void fprintf(int file, string format, params object[] args) {
-        if (file == stdout) System.Console.Out.WriteLine(format, args);
-        if (file == stderr) System.Console.Error.WriteLine(format, args);
+        sprintf(out format, format, args);
+        if (file == stdout) System.Console.Out.Write(format);
+        if (file == stderr) System.Console.Error.Write(format);
     }
 
-
     public static void sprintf(out string dest, string format, params object[] args) {
-        dest = System.String.Format(format, args);
+        var ix = 0;
+        var fmt = fformat.Replace(format, m => $"{{{ix++}}}");
+        dest = System.String.Format(fmt, args);
     }
 
     public const int O_RDONLY = 1;

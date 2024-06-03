@@ -94,11 +94,10 @@ class pmtf : mtfread {
             return(-1);
         }
 
-        if (outPath.Length > 0 && outPath[0] != '/')
+        if (outPath.Length > 0 && !Path.IsPathRooted(outPath))
         {
             curPath = Directory.GetCurrentDirectory();
-            sprintf(out outPath, "%s/%s", curPath, outPath);
-            outPath = outPath.TrimEnd('/');
+            outPath = Path.Join(curPath, outPath);
         }
 
         if (debug > 0)
@@ -249,18 +248,20 @@ class pmtf : mtfread {
         char c;
         string str;
 
-        i = 1;
+        i = 0;
 
         while ((i < argc) && (argv[i][0] == '-'))
         {
             p = 1;
-            str = argv[i];
+            str = argv[i].Substring(1);
             c = argv[i][p];
 
             if (str.Length > 1)
             {
-                while (c != '\0')
+                while (p <= str.Length)
                 {
+                    c = argv[i][p];
+
                     if (c == 'v')
                     {
                         verbose = 1;
